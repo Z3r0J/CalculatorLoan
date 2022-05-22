@@ -3,5 +3,46 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="row justify-content-center">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header"></div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="" class="form-label">Amount:</label>
+                            <input type="text" name="Amount" value="" class="form-control" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Type" class="form-label">Type:</label>
+                            <select name="Type" class="form-select">
+                                <option value="-1">Select a Type</option>
+                                <option value="1">Personal</option>
+                                <option value="2">Automovil</option>
+                                <option value="1">Hipotecario</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Interest Rate:</label>
+                            <input type="text" name="Interest" value="" disabled class="form-control"/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Monthly amount of dues:</label>
+                            <select name="MonthlyPay" class="form-select" required>
+                                <option value="-1">Select a Monthly Amount</option>
+                                @for (int i = 12; i <= 120; i=i+6)
+                                {
+                                    <option value=@i>@i Month</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
