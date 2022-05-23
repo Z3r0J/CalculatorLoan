@@ -11,6 +11,7 @@ namespace Application.ViewModel
         public double Amount { get; set; }
         public string Name { get; set; }
         public double InterestRate { get; set; }
+        public int Month { get; set; }
         public double Total { get; set; }
     }
 }

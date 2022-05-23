@@ -51,6 +51,10 @@
                                 <option value="2">Automovil</option>
                                 <option value="3">Hipotecario</option>
                             </select>
+                            @if (ViewBag.ErrorMessage!="")
+                            {
+                                <span class="text-danger">@ViewBag.ErrorMessage</span>
+                            }
                         </div>
                     </div>
                     <div class="row">
@@ -67,6 +71,10 @@
                                     <option value=@i>@i Month</option>
                                 }
                             </select>
+                            @if (ViewBag.ErrorMessage != "")
+                            {
+                                <span class="text-danger">@ViewBag.ErrorMessage</span>
+                            }
                         </div>
                     </div>
 

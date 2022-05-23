@@ -1,4 +1,5 @@
-﻿using Application.ViewModel;
+﻿using Application.Services;
+using Application.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,13 @@ namespace CalculatorLoan.Controllers
     {
         private readonly LoanTypeViewModel loanType;
         private readonly LoanInformationViewModel loanInformation;
+        private readonly LoanServices services;
         public LoanCalculatorController()
         {
             loanType = new();
 
             loanInformation = new();
+            services = new();
         }
         public IActionResult Index()
         {
@@ -34,8 +37,16 @@ namespace CalculatorLoan.Controllers
 
         [HttpPost]
         public IActionResult TotalToPay(LoanInformationViewModel vm) {
-            Console.WriteLine(vm.RateInterest);
-            return View();
+            if (vm.Type < 0 || vm.MonthlyPay<0)
+            {
+                ViewBag.ErrorMessage = "Complete the 2 Select";
+                return View("Index");
+            }
+            else
+            {
+                var response = services.GetLoanResult(vm);
+                return View(response);
+            }
         }
     }
 }
